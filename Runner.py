@@ -8,16 +8,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from win32api import GetSystemMetrics
 import time
 
 
 def main():
 
     # Pass genius link to webdriver (browser)
+    # Also sets window size to half screen width (left aligned)
 
     url = 'https://genius.com/'
     browser = webdriver.Chrome()
     browser.get(url)
+    browser.set_window_size((GetSystemMetrics(0)/2), GetSystemMetrics(1))
+    browser.set_window_position(-10, 0)
 
     # Finds the search bar element and enters user's song
 
